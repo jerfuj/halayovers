@@ -9,13 +9,19 @@ const ReviewList = () => {
   return (
     <div className={styles.reviewsContainer}>
       <h4>Reviews Header Goes Here</h4>
-      <div>
+      <div className={styles.btnAndSortContainer}>
         <button>Write a Review</button>
-        dropdown to sort
+        <select>
+          <option>Most Recent</option>
+          <option>Highest Rated</option>
+          <option>Oldest</option>
+        </select>
       </div>
-      <ul>
+      <ul className={styles.list}>
         {dummyReviews.map(review => (
-          <Review review={review} />
+          <li className={styles.review}>
+            <Review review={review} />
+          </li>
         ))}
       </ul>
     </div>
