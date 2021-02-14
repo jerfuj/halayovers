@@ -1,6 +1,12 @@
 .linkContainer {
-  border: 1px solid black;
   height: 200px;
   width: 300px;
   margin: 20px;
+  border-radius: 5%;
+  box-shadow: 2px 2px 6px #80808096;
+}
+
+.code {
+  /* position: relative;
+  left: 50%; */
 }
