@@ -4,12 +4,19 @@ import styles from './CityLink.module.css';
 
 const CityLink = ({ city }) => {
   return (
-    <div className={styles.linkContainer}>
-      <Link to={`/${city.airport_code}`}>
-        <div className={styles.code}>{city.airport_code}</div>
-        <img src={city.img} className={styles.img} />
-      </Link>
-    </div>
+    <Link to={`/${city.airport_code}`}>
+      <div
+        className={styles.linkContainer}
+        style={{
+          backgroundImage: `url(${city.img})`,
+          backgroundSize: 'cover'
+        }}
+      >
+        <div className={styles.code}>
+          {city.airport_code}
+        </div>
+      </div>
+    </Link>
   )
 }
 

@@ -2,18 +2,11 @@
   height: 200px;
   width: 300px;
   margin: 20px;
-}
-
-.img {
-  height: 100%;
-  width: 100%;
-}
-
-.linkContainer, .img {
   border-radius: 5%;
+  box-shadow: 2px 2px 6px #80808096;
 }
 
 .code {
-  position: relative;
-  left: 50%;
+  /* position: relative;
+  left: 50%; */
 }
