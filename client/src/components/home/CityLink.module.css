@@ -1,6 +1,19 @@
 .linkContainer {
-  border: 1px solid black;
   height: 200px;
   width: 300px;
   margin: 20px;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+.linkContainer, .img {
+  border-radius: 5%;
+}
+
+.code {
+  position: relative;
+  left: 50%;
 }
