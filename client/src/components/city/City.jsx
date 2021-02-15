@@ -10,12 +10,11 @@ const City = () => {
   const [city, setCity] = useState({});
   const [reviews, setReviews] = useState([])
 
-  useEffect(() => {
+  const getCityReviews = () => {
     $.ajax({
       method: 'GET',
       url: `http://localhost:3000/api/cities/${id}`,
       success: (data) => {
-        console.log('DATA', data)
         setCity(data[0][0]);
         setReviews(data[1]);
       },
@@ -23,12 +22,16 @@ const City = () => {
         console.error(err);
       }
     })
+  }
+
+  useEffect(() => {
+    getCityReviews();
   }, [])
 
   return (
     <div className={styles.cityContainer}>
       <CityHeader city={city} />
-      <ReviewList reviews={reviews} />
+      <ReviewList city={city} reviews={reviews} getCityReviews={getCityReviews}/>
     </div>
   )
 }
