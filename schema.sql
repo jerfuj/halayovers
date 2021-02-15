@@ -12,12 +12,11 @@ CREATE TABLE IF NOT EXISTS cities (
 CREATE TABLE IF NOT EXISTS reviews (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   airport_code CHAR(3) NOT NULL,
-  user_id INT NOT NULL,
-  title VARCHAR(200),
-  date_of_trip DATE,
+  fa_name VARCHAR (100) NOT NULL,
+  date DATE NOT NULL,
   categories JSON NOT NULL,
   review_text TEXT NOT NULL,
-  upvotes INT,
+  upvotes INT NOT NULL,
   FOREIGN KEY (airport_code) REFERENCES cities(airport_code)
 );
 
