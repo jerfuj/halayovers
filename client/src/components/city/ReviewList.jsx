@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Review from './Review.jsx';
 import styles from './ReviewList.module.css';
+import FormModal from './FormModal.jsx';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
 
-const dummyReviews = ['review one', 'review two', 'review three', 'review four', 'review five'];
-
-const ReviewList = () => {
+const ReviewList = ({ city, reviews, getCityReviews }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className={styles.reviewsContainer}>
-      <h4>Reviews Header Goes Here</h4>
+      <FormModal
+        city={city}
+        show={show}
+        handleClose={handleClose}
+        getCityReviews={getCityReviews}
+      />
       <div className={styles.btnAndSortContainer}>
-        <button>Write a Review</button>
-        <select>
+        <Button variant="outline-dark" onClick={handleShow}>Write a Review!</Button>
+        <Form.Control as="select" className={styles.select}>
           <option>Most Recent</option>
           <option>Highest Rated</option>
           <option>Oldest</option>
-        </select>
+        </Form.Control>
       </div>
       <ul className={styles.list}>
-        {dummyReviews.map(review => (
-          <li className={styles.review}>
-            <Review review={review} />
-          </li>
+        {reviews.map(review => (
+          <Review review={review} />
         ))}
       </ul>
     </div>
