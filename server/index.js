@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { getCities, getReviews } = require('../database/index');
+const { getCities, getReviews, postReview } = require('../database/index');
 
 const app = express();
 const port = 3000;
@@ -25,6 +25,17 @@ app.get('/api/cities/:id', (req, res) => {
   getReviews(id, (err, data) => {
     if (err) {
       res.status(404).send(err);
+    }
+    console.log(data);
+    res.status(200).send(data);
+  })
+})
+
+app.post('/api/cities/:id/review', (req, res) => {
+  const { id } = req.params;
+  postReview(id, req.body, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
     }
     res.status(200).send(data);
   })
