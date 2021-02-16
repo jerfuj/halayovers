@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import $ from 'jquery';
 import dateFormat from 'dateformat';
 import styles from './Review.module.css';
+import Button from 'react-bootstrap/Button'
 
 const Review = ({review}) => {
   const categories = JSON.parse(review.categories);
   const date = dateFormat(review.date, 'shortDate')
+  const [btnDisable, setBtnDisable] = useState(false);
+
+  const upVote = () => {
+    $.ajax({
+      method: 'PATCH',
+      url: `http://localhost:3000/api/review/${review.id}/upvote`,
+      success: (res) => {
+        console.log(res);
+        setBtnDisable(true);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
   return (
     <li className={styles.reviewContainer}>
       <div className={styles.nameAndDate} >
@@ -22,9 +40,14 @@ const Review = ({review}) => {
         <b>Pro Tip:</b> {review.review_text}
       </div>
       <div className={styles.upvotes}>
-        <button>
+        <Button
+          variant="outline-primary"
+          size="sm"
+          onClick={upVote}
+          disabled={btnDisable}
+        >
           useful {review.upvotes}
-        </button>
+        </Button>
       </div>
     </li>
   )
