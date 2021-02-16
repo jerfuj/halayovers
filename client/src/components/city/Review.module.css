@@ -1,9 +1,8 @@
 .reviewContainer {
-  border: 1px solid #80808021;
-  width: 80%;
+  width: 60%;
   list-style: none;
   margin: 10px;
-  box-shadow: 2px 2px 2px #80808042;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
 
 .nameAndDate {
@@ -17,8 +16,8 @@
 }
 
 .date, .categories, .text {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .nameAndDate, .categories, .text, .upvotes {
