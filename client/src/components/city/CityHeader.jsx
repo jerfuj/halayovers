@@ -10,7 +10,9 @@ const CityHeader = ({ city }) => {
           backgroundImage: `url(${city.img})`,
           backgroundSize: 'cover'
         }}>
-        <h1 className={styles.h1}>Welcome To {city.city}!</h1>
+        <div className={styles.overlay}>
+          <h1 className={styles.h1}>Welcome To {city.city}!</h1>
+        </div>
       </div>
     </div>
   )
