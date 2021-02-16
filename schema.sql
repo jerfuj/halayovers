@@ -20,6 +20,31 @@ CREATE TABLE IF NOT EXISTS reviews (
   FOREIGN KEY (airport_code) REFERENCES cities(airport_code)
 );
 
+CREATE TABLE IF NOT EXISTS hotels (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  airport_code CHAR(3) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  address VARCHAR(200) NOT NULL,
+  phone VARCHAR(30) NOT NULL,
+  microwave VARCHAR(20),
+  fridge VARCHAR(20),
+  gym VARCHAR(20),
+  breakfast VARCHAR(20),
+  shuttle VARCHAR(100),
+  pickup VARCHAR(20)
+);
+
+-- INSERT INTO hotels (airport_code, name, address, phone, microwave, fridge, gym, breakfast, shuttle, pickup) VALUES
+-- ('ICN', 'Sheraton Grand Incheon Hotel', 'South Korea, Incheon, Yeonsu-gu, Songdo 1(il)-dong, 153 Convensia-road', '+82 32-835-1000', 'No', 'Yes', 'Free', 'No', 'Hotel Shuttle', '2:00'),
+-- ('KIX', 'Swissotel Nankai Osaka', '5 chome-1-60 Nanba, Chuo Ward, Osaka, 542-0076, Japan', '+81 6-6646-1111', 'No', 'Yes', 'Paid', 'No', 'Cab Station Company', '2:15'),
+-- ('OAK', 'Hilton Oakland Airport', '1 Hegenberger Rd, Oakland, CA 94621', '(510) 635-5000', 'No', 'Yes', 'Free', 'No', 'Hotel Shuttle', 'N/A'),
+-- ('PDX', 'Radisson Hotel Portland Airport', '6233 NE 78th Ct, Portland, OR 97218', '(971) 361-3971', 'No', 'Yes', 'No', 'Free', 'Hotel Shuttle', '1:30'),
+-- ('PHX', 'Hyatt Regency Phoenix', '122 N 2nd St, Phoenix, AZ 85004', '(602) 252-1234', 'Yes', 'Yes', 'Free', 'No', 'Desert Coach', '1:30'),
+-- ('SAN', 'The Westin San Diego Gaslamp Quarter', '910 Broadway Cir, San Diego, CA 92101', '(619) 239-2200', 'Yes', 'Yes', 'Free', 'No', 'Better Business Connection', '1:35'),
+-- ('SEA', 'Coast Gateway Hotel', '18415 International Blvd, SeaTac, WA 98188', '(206) 248-8200', 'Yes', 'Yes', 'No', 'Free', 'Hotel Shuttle/Walk', 'N/A'),
+-- ('SJC', 'Fairmont San Jose', '170 S Market St, San Jose, CA 95113', '(408) 998-1900', 'Yes', 'Can order to room', 'Yes', 'No', 'Airline Coach Service', '1:30'),
+-- ('SMF', 'Hyatt Regency Sacramento', '1209 L St, Sacramento, CA 95814', '(916) 443-1234', 'Yes', 'Yes', 'Free', 'No', 'Neumann Transportation', '1:40');
+
 -- INSERT INTO cities (airport_code, city, state_or_country, img) VALUES
 -- ('AKL', 'Auckland', 'New Zealand', 'https://bigbrain-itemdetails.s3-us-west-1.amazonaws.com/MVPimages/AKL.jpg'),
 -- ('AUS', 'Austin', 'Texas', 'https://bigbrain-itemdetails.s3-us-west-1.amazonaws.com/MVPimages/AUS.webp'),
