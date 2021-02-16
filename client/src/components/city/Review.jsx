@@ -3,6 +3,7 @@ import $ from 'jquery';
 import dateFormat from 'dateformat';
 import styles from './Review.module.css';
 import Button from 'react-bootstrap/Button'
+import TimeAgo from 'react-timeago';
 
 const Review = ({review}) => {
   const categories = JSON.parse(review.categories);
@@ -14,7 +15,6 @@ const Review = ({review}) => {
       method: 'PATCH',
       url: `http://localhost:3000/api/review/${review.id}/upvote`,
       success: (res) => {
-        console.log(res);
         setBtnDisable(true);
       },
       error: (err) => {
@@ -30,14 +30,14 @@ const Review = ({review}) => {
           {review.fa_name}
         </div>
         <div className={styles.date}>
-          {date}
+          <TimeAgo date={review.date} />
         </div>
       </div>
       <div className={styles.categories}>
-        <b>Category:</b> {categories.join(', ')}
+        <i>Category:</i> {categories.join(', ')}
       </div>
       <div className={styles.text}>
-        <b>Pro Tip:</b> {review.review_text}
+        <i>Tip:</i> {review.review_text}
       </div>
       <div className={styles.upvotes}>
         <Button
@@ -46,7 +46,7 @@ const Review = ({review}) => {
           onClick={upVote}
           disabled={btnDisable}
         >
-          useful {review.upvotes}
+          useful
         </Button>
       </div>
     </li>
