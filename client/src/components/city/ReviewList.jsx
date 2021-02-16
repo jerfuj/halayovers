@@ -1,27 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Review from './Review.jsx';
+import Hotel from './Hotel.jsx';
+import FormModal from './FormModal.jsx';
 import styles from './ReviewList.module.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
-const dummyReviews = ['review one', 'review two', 'review three', 'review four', 'review five'];
-
-const ReviewList = () => {
+const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className={styles.reviewsContainer}>
-      <h4>Reviews Header Goes Here</h4>
+      <Hotel hotelInfo={hotelInfo}/>
+      <FormModal
+        city={city}
+        show={show}
+        handleClose={handleClose}
+        getCityReviews={getCityReviews}
+      />
       <div className={styles.btnAndSortContainer}>
-        <button>Write a Review</button>
-        <select>
-          <option>Most Recent</option>
-          <option>Highest Rated</option>
-          <option>Oldest</option>
-        </select>
+        <Button variant="outline-dark" onClick={handleShow}>Write a Review!</Button>
+        <Form.Control as="select" className={styles.select} onChange={(e) => {
+          changeSort(e, city.airport_code);
+        }}>
+          <option value="recent">Most Recent</option>
+          <option value="highestrated">Highest Rated</option>
+          <option value="oldest">Oldest</option>
+        </Form.Control>
       </div>
       <ul className={styles.list}>
-        {dummyReviews.map(review => (
-          <li className={styles.review}>
-            <Review review={review} />
-          </li>
+        {reviews.map(review => (
+          <Review review={review} />
         ))}
       </ul>
     </div>

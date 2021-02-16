@@ -4,7 +4,7 @@ import styles from './CityLink.module.css';
 
 const CityLink = ({ city }) => {
   return (
-    <Link to={`/${city.airport_code}`}>
+    <Link to={`/${city.airport_code}`} className={styles.link}>
       <div
         className={styles.linkContainer}
         style={{

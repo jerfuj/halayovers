@@ -8,27 +8,53 @@ import styles from './City.module.css';
 const City = () => {
   let { id } = useParams();
   const [city, setCity] = useState({});
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
+  const [hotelInfo, setHotelInfo] = useState([]);
 
-  useEffect(() => {
+  const changeSort = (e, id) => {
+    const value = e.target.value;
+    console.log(value);
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3000/api/cities/${id}`,
+      url: `http://localhost:3000/api/${id}?sort=${value}`,
       success: (data) => {
-        console.log('DATA', data)
-        setCity(data[0][0]);
-        setReviews(data[1]);
+        setReviews(data);
       },
       error: (err) => {
         console.error(err);
       }
     })
+  }
+
+  const getCityReviews = () => {
+    $.ajax({
+      method: 'GET',
+      url: `http://localhost:3000/api/cities/${id}`,
+      success: (data) => {
+        setCity(data[0][0]);
+        setReviews(data[1]);
+        setHotelInfo(data[2][0]);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  useEffect(() => {
+    getCityReviews();
   }, [])
 
   return (
     <div className={styles.cityContainer}>
       <CityHeader city={city} />
-      <ReviewList reviews={reviews} />
+      <ReviewList
+        city={city}
+        reviews={reviews}
+        getCityReviews={getCityReviews}
+        hotelInfo={hotelInfo}
+        changeSort={changeSort}
+      />
     </div>
   )
 }
