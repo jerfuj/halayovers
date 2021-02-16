@@ -63,7 +63,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
         <Form.Control type="date" onChange={handleDateChange} required/>
       </Form.Group>
       <Form.Group>
-        <Form.Label>Category</Form.Label>
+        <Form.Label>Categories</Form.Label>
           <Form.Control as="select" multiple onChange={handleCategoriesChange} required>
             <option value="food">Food</option>
             <option value="sightseeing">Sightseeing</option>
@@ -72,6 +72,9 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
             <option value="discounts">Discounts</option>
             <option value="misc">Misc</option>
           </Form.Control>
+          <Form.Text className="text-muted">
+            To select multiple: hold down command (mac) or ctrl (windows)
+          </Form.Text>
       </Form.Group>
       <Form.Group>
         <Form.Control as="textarea" rows={5}
