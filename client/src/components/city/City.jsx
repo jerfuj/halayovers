@@ -8,7 +8,23 @@ import styles from './City.module.css';
 const City = () => {
   let { id } = useParams();
   const [city, setCity] = useState({});
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
+  const [hotelInfo, setHotelInfo] = useState([]);
+
+  const changeSort = (e, id) => {
+    const value = e.target.value;
+    console.log(value);
+    $.ajax({
+      method: 'GET',
+      url: `http://localhost:3000/api/${id}?sort=${value}`,
+      success: (data) => {
+        setReviews(data);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
 
   const getCityReviews = () => {
     $.ajax({
@@ -17,6 +33,7 @@ const City = () => {
       success: (data) => {
         setCity(data[0][0]);
         setReviews(data[1]);
+        setHotelInfo(data[2][0]);
       },
       error: (err) => {
         console.error(err);
@@ -31,7 +48,13 @@ const City = () => {
   return (
     <div className={styles.cityContainer}>
       <CityHeader city={city} />
-      <ReviewList city={city} reviews={reviews} getCityReviews={getCityReviews}/>
+      <ReviewList
+        city={city}
+        reviews={reviews}
+        getCityReviews={getCityReviews}
+        hotelInfo={hotelInfo}
+        changeSort={changeSort}
+      />
     </div>
   )
 }
