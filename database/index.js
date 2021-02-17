@@ -83,10 +83,34 @@ const upVote = (id, callback) => {
   })
 }
 
+const deleteReview = (id, callback) => {
+  connection.query('DELETE FROM reviews WHERE id=?', [id], (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(err, data);
+    }
+  })
+}
+
+const getUser = (empNumber, password, callback) => {
+  connection.query('SELECT emp_number, first_name, last_name from users WHERE emp_number=? AND password=?', [empNumber, password], (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(err, data);
+    }
+  })
+}
+
+
+
 module.exports = {
   getCities,
   getReviews,
   postReview,
   upVote,
-  sortReviews
+  deleteReview,
+  sortReviews,
+  getUser
 }
