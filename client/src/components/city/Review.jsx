@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
+import EditFormModal from './EditFormModal.jsx';
 import dateFormat from 'dateformat';
 import styles from './Review.module.css';
 import Button from 'react-bootstrap/Button'
@@ -8,6 +9,7 @@ import TimeAgo from 'react-timeago';
 const Review = ({review, getCityReviews}) => {
   const categories = JSON.parse(review.categories);
   const [btnDisable, setBtnDisable] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const upVote = () => {
     $.ajax({
@@ -53,14 +55,6 @@ const Review = ({review, getCityReviews}) => {
         {review.review_text}
       </div>
       <div className={styles.buttons}>
-        {/* <Button
-          variant="outline-primary"
-          size="sm"
-          onClick={upVote}
-          disabled={btnDisable}
-        >
-          useful
-        </Button> */}
         <button
           onClick={upVote}
           className={styles.btn}
@@ -68,12 +62,25 @@ const Review = ({review, getCityReviews}) => {
         >
           Useful
         </button>
-        <button
-          onClick={deleteReview}
-          className={styles.btn}
-        >
-          Delete
-        </button>
+        <div className={styles.editAndDelete}>
+          <button
+            onClick={(e) => {setShowEditForm(true)}}
+            className={styles.btn}
+          >
+            Edit
+          </button>
+          <button
+            className={styles.btn}
+          >
+            Delete
+          </button>
+        </div>
+        <EditFormModal
+          review={review}
+          show={showEditForm}
+          setShowEditForm={setShowEditForm}
+          getCityReviews={getCityReviews}
+        />
       </div>
     </li>
   )
