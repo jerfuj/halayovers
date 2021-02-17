@@ -32,7 +32,7 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
       </div>
       <ul className={styles.list}>
         {reviews.map(review => (
-          <Review review={review} />
+          <Review review={review} getCityReviews={getCityReviews}/>
         ))}
       </ul>
     </div>
