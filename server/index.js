@@ -2,7 +2,16 @@ const express = require('express');
 const path = require('path')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { getCities, getReviews, postReview, upVote, sortReviews, getUser, deleteReview } = require('../database/index');
+const {
+  getCities,
+  getReviews,
+  postReview,
+  upVote,
+  sortReviews,
+  getUser,
+  deleteReview,
+  editReview
+} = require('../database/index');
 
 const app = express();
 const port = 3000;
@@ -59,6 +68,16 @@ app.post('/api/cities/:id/review', (req, res) => {
   postReview(id, req.body, (err, data) => {
     if (err) {
       res.status(400).send(err);
+    }
+    res.status(200).send(data);
+  })
+})
+
+app.patch('/api/cities/review/:id', (req, res) => {
+  const { id } = req.params;
+  editReview(id, req.body, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
     }
     res.status(200).send(data);
   })
