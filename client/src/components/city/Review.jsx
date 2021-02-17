@@ -5,9 +5,8 @@ import styles from './Review.module.css';
 import Button from 'react-bootstrap/Button'
 import TimeAgo from 'react-timeago';
 
-const Review = ({review}) => {
+const Review = ({review, getCityReviews}) => {
   const categories = JSON.parse(review.categories);
-  const date = dateFormat(review.date, 'shortDate')
   const [btnDisable, setBtnDisable] = useState(false);
 
   const upVote = () => {
@@ -23,6 +22,20 @@ const Review = ({review}) => {
     })
   }
 
+  const deleteReview = () => {
+    $.ajax({
+      method: 'DELETE',
+      url: `http://localhost:3000/api/review/${review.id}/delete`,
+      success: (res) => {
+        console.log('DELETED!')
+        getCityReviews();
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
   return (
     <li className={styles.reviewContainer}>
       <div className={styles.nameAndDate} >
@@ -30,24 +43,37 @@ const Review = ({review}) => {
           {review.fa_name}
         </div>
         <div className={styles.date}>
-          <TimeAgo date={review.date} />
+          <TimeAgo live={false} date={review.date} />
         </div>
       </div>
       <div className={styles.categories}>
-        <i>Category:</i> {categories.join(', ')}
+        <span className={styles.category}>Category:</span> {categories.join(', ')}
       </div>
       <div className={styles.text}>
-        <i>Tip:</i> {review.review_text}
+        {review.review_text}
       </div>
-      <div className={styles.upvotes}>
-        <Button
+      <div className={styles.buttons}>
+        {/* <Button
           variant="outline-primary"
           size="sm"
           onClick={upVote}
           disabled={btnDisable}
         >
           useful
-        </Button>
+        </Button> */}
+        <button
+          onClick={upVote}
+          className={styles.btn}
+          disabled={btnDisable}
+        >
+          Useful
+        </button>
+        <button
+          onClick={deleteReview}
+          className={styles.btn}
+        >
+          Delete
+        </button>
       </div>
     </li>
   )
