@@ -13,7 +13,6 @@ const City = () => {
 
   const changeSort = (e, id) => {
     const value = e.target.value;
-    console.log(value);
     $.ajax({
       method: 'GET',
       url: `http://localhost:3000/api/${id}?sort=${value}`,
