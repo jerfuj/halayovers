@@ -67,7 +67,20 @@ const postReview = (id, reviewData, callback) => {
       console.log(err);
       callback(err);
     } else {
-      console.log(data);
+      callback(err, data);
+    }
+  })
+}
+
+const editReview = (id, editData, callback) => {
+  let { name, categories, text } = editData;
+  if (typeof categories === 'string') {
+    categories = [categories];
+  }
+  connection.query('UPDATE reviews SET fa_name=?, categories=?, review_text=? WHERE id=?', [name, JSON.stringify(categories), text, id], (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
       callback(err, data);
     }
   })
@@ -112,5 +125,6 @@ module.exports = {
   upVote,
   deleteReview,
   sortReviews,
-  getUser
+  getUser,
+  editReview
 }
