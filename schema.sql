@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS reviews (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   airport_code CHAR(3) NOT NULL,
   fa_name VARCHAR (100) NOT NULL,
-  date DATE NOT NULL,
+  date DATETIME NOT NULL,
   categories JSON NOT NULL,
   review_text TEXT NOT NULL,
   upvotes INT NOT NULL,
@@ -33,6 +33,16 @@ CREATE TABLE IF NOT EXISTS hotels (
   shuttle VARCHAR(100),
   pickup VARCHAR(20)
 );
+
+CREATE TABLE IF NOT EXISTS users (
+  emp_number INT NOT NULL PRIMARY KEY,
+  password VARCHAR(50) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL
+)
+
+INSERT INTO users (emp_number, password, first_name, last_name)
+VALUES (19899, 'password', 'Jeremy', 'Fujimoto');
 
 -- INSERT INTO hotels (airport_code, name, address, phone, microwave, fridge, gym, breakfast, shuttle, pickup) VALUES
 -- ('ICN', 'Sheraton Grand Incheon Hotel', 'South Korea, Incheon, Yeonsu-gu, Songdo 1(il)-dong, 153 Convensia-road', '+82 32-835-1000', 'No', 'Yes', 'Free', 'No', 'Hotel Shuttle', '2:00'),
