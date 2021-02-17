@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import dateFormat from 'dateformat';
 
 const ReviewForm = ({ city, handleClose, getCityReviews }) => {
   const [name, setName] = useState('');
@@ -15,13 +16,14 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleClose();
+    const now = new Date();
     $.ajax({
       traditional: true,
       method: 'POST',
       url: `http://localhost:3000/api/cities/${airportCode}/review`,
       data: {
         name,
-        date,
+        date: dateFormat(now, "yyyy-mm-dd HH:MM:ss"),
         categories,
         review
       },
@@ -58,10 +60,10 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
         <Form.Label>Name</Form.Label>
         <Form.Control type="text" onChange={handleNameChange} required/>
       </Form.Group>
-      <Form.Group controlId="date">
+      {/* <Form.Group controlId="date">
         <Form.Label>Date of Trip</Form.Label>
         <Form.Control type="date" onChange={handleDateChange} required/>
-      </Form.Group>
+      </Form.Group> */}
       <Form.Group>
         <Form.Label>Categories</Form.Label>
           <Form.Control as="select" multiple onChange={handleCategoriesChange} required>
