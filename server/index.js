@@ -2,14 +2,25 @@ const express = require('express');
 const path = require('path')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { getCities, getReviews, postReview, upVote, sortReviews } = require('../database/index');
+const { getCities, getReviews, postReview, upVote, sortReviews, getUser, deleteReview } = require('../database/index');
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
 app.use(express.static(`${__dirname}/../client/dist`));
+
+app.post('/login', (req, res) => {
+  const { empNumber, password } = req.body;
+  getUser(empNumber, password, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    }
+    res.status(200).send(data[0]);
+  })
+})
 
 app.get('/api/cities', (req, res) => {
   getCities((err, data) => {
@@ -61,9 +72,17 @@ app.patch('/api/review/:id/upvote', (req, res) => {
     }
     res.status(200).send(data);
   })
-
 })
 
+app.delete('/api/review/:id/delete', (req, res) => {
+  const { id } = req.params;
+  deleteReview(id, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    }
+    res.status(200).send(data);
+  })
+})
 
 app.get('*', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, '../client/dist/')});
