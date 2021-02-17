@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useLocation } from 'react
 import $ from 'jquery';
 import Home from './home/Home.jsx';
 import City from './city/City.jsx';
+import Login from './Login.jsx';
 import styles from './App.module.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -19,7 +20,8 @@ const ScrollToTop = () => {
 }
 
 const App = () => {
-  const [cities, setCities] = useState([])
+  const [cities, setCities] = useState([]);
+  const [token, setToken] = useState(sessionStorage.getItem('token'));
 
   useEffect(() => {
     $.ajax({
@@ -33,6 +35,12 @@ const App = () => {
       }
     })
   }, [])
+
+  if (!token) {
+    return (
+      <Login setToken={setToken} />
+    )
+  }
 
   return (
     <div>
