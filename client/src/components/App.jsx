@@ -57,7 +57,7 @@ const App = () => {
           <Nav.Link href="/">Home</Nav.Link>
           <NavDropdown title="Cities" id="basic-nav-dropdown">
             {cities.map(city => (
-              <NavDropdown.Item href={`/${city.airport_code}`} className={styles.dropdownItem}>{city.airport_code}</NavDropdown.Item>
+              <NavDropdown.Item key={city.airport_code} href={`/${city.airport_code}`} className={styles.dropdownItem}>{city.airport_code}</NavDropdown.Item>
             ))}
           </NavDropdown>
         </Nav>
