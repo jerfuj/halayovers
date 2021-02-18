@@ -109,6 +109,16 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
         >
           Misc
         </Button>
+        <Button
+          onClick={(e) => {
+            setCategorySort(e.target.value);
+            changeSort(e, city.airport_code, sortOption, e.target.value)
+          }}
+          className={styles.btn}
+          value="Shopping"
+        >
+          Shopping
+        </Button>
       </div>
       <ul className={styles.list}>
         {reviews.map(review => (
