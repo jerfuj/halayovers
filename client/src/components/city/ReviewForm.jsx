@@ -11,6 +11,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
   const [categories, setCategories] = useState('');
   const [review, setReview] = useState('');
   const airportCode = city.airport_code;
+  const token = JSON.parse(sessionStorage.getItem('token'));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,12 +53,11 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
   const handleReviewChange = (e) => {
     setReview(e.target.value);
   }
-
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="name">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="text" onChange={handleNameChange} required/>
+        <Form.Control type="text" value={token.first_name} required/>
       </Form.Group>
       <Form.Group>
         <Form.Label>Categories</Form.Label>
@@ -68,6 +68,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
             <option value="Airport">Airport</option>
             <option value="Discounts">Discounts</option>
             <option value="Misc">Misc</option>
+            <option value="Shopping">Shopping</option>
           </Form.Control>
           <Form.Text className="text-muted">
             To select multiple: hold down command (mac) or ctrl (windows)
