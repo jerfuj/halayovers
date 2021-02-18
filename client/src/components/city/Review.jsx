@@ -60,7 +60,7 @@ const Review = ({review, getCityReviews}) => {
           className={styles.btn}
           disabled={btnDisable}
         >
-          Useful
+          Useful {review.upvotes}
         </button>
         <div className={styles.editAndDelete}>
           <button
@@ -71,6 +71,7 @@ const Review = ({review, getCityReviews}) => {
           </button>
           <button
             className={styles.btn}
+            onClick={deleteReview}
           >
             Delete
           </button>
