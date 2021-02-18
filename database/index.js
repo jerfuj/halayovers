@@ -36,25 +36,45 @@ const getReviews = (id, callback) => {
   })
 }
 
-const sortReviews = (id, sort, callback) => {
+const sortReviews = (id, sort, category, callback) => {
   let query;
-  if (sort === 'recent') {
-    query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date DESC`
-  }
-  if (sort === 'highestrated') {
-    query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY upvotes DESC`
-  }
-  if (sort === 'oldest') {
-    query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date ASC`
-  }
-  connection.query(query, [id], (err, data) => {
-    if (err) {
-      console.log(err);
-      callback(err);
-    } else {
-      callback(err, data);
+  if (category === 'null') {
+    if (sort === 'recent') {
+      query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date DESC`
     }
-  })
+    if (sort === 'highestrated') {
+      query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY upvotes DESC`
+    }
+    if (sort === 'oldest') {
+      query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date ASC`
+    }
+    connection.query(query, [id], (err, data) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(err, data);
+      }
+    })
+  } else {
+    let categoryLike = `%${category}%`;
+    if (sort === 'recent') {
+      query = `SELECT * FROM reviews WHERE airport_code=? AND categories LIKE ? ORDER BY date DESC`
+    }
+    if (sort === 'highestrated') {
+      query = `SELECT * FROM reviews WHERE airport_code=? AND categories LIKE ? ORDER BY upvotes DESC`
+    }
+    if (sort === 'oldest') {
+      query = `SELECT * FROM reviews WHERE airport_code=? AND categories LIKE ? ORDER BY date ASC`
+    }
+    connection.query(query, [id, categoryLike], (err, data) => {
+      if (err) {
+        console.log(err);
+        callback(err);
+      } else {
+        callback(err, data);
+      }
+    })
+  }
 }
 
 const postReview = (id, reviewData, callback) => {
