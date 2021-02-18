@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import styles from './ReviewForm.module.css';
 import $ from 'jquery';
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
@@ -60,19 +59,15 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
         <Form.Label>Name</Form.Label>
         <Form.Control type="text" onChange={handleNameChange} required/>
       </Form.Group>
-      {/* <Form.Group controlId="date">
-        <Form.Label>Date of Trip</Form.Label>
-        <Form.Control type="date" onChange={handleDateChange} required/>
-      </Form.Group> */}
       <Form.Group>
         <Form.Label>Categories</Form.Label>
           <Form.Control as="select" multiple onChange={handleCategoriesChange} required>
-            <option value="food">Food</option>
-            <option value="sightseeing">Sightseeing</option>
-            <option value="hotel">Hotel</option>
-            <option value="airport">Airport</option>
-            <option value="discounts">Discounts</option>
-            <option value="misc">Misc</option>
+            <option value="Food">Food</option>
+            <option value="Sightseeing">Sightseeing</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Airport">Airport</option>
+            <option value="Discounts">Discounts</option>
+            <option value="Misc">Misc</option>
           </Form.Control>
           <Form.Text className="text-muted">
             To select multiple: hold down command (mac) or ctrl (windows)
@@ -87,7 +82,6 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
       </Form.Group>
       <Button
         type="submit"
-        className={styles.btn}
         variant="success"
       >
           Submit
