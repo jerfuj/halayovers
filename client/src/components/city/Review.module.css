@@ -32,6 +32,10 @@
   font-weight: 200;
 }
 
+.editAndDelete button {
+  margin-right: 3px;
+}
+
 .btn {
   color: #d2068a;
   background: none;
@@ -43,4 +47,13 @@
 .btn:hover {
   color: #fff;
   background: #d2068a;
+}
+
+.btn:disabled {
+  color: #d2068b5e;
+  border-color: #d2068b5e;
+}
+
+.btn:disabled:hover {
+  background: none;
 }
