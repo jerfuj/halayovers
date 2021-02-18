@@ -69,8 +69,9 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
             <option value="Hotel">Hotel</option>
             <option value="Airport">Airport</option>
             <option value="Discounts">Discounts</option>
-            <option value="Misc">Misc</option>
             <option value="Shopping">Shopping</option>
+            <option value="Flight">Flight</option>
+            <option value="Misc">Misc</option>
           </Form.Control>
           <Form.Text className="text-muted">
             To select multiple: hold down command (mac) or ctrl (windows)

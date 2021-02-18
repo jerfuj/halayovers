@@ -22,7 +22,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
       method: 'POST',
       url: `http://localhost:3000/api/cities/${airportCode}/review`,
       data: {
-        name,
+        name: token.first_name,
         date: dateFormat(now, "yyyy-mm-dd HH:MM:ss"),
         categories,
         review
@@ -57,7 +57,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="name">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="text" value={token.first_name} required/>
+        <Form.Control type="text" value={token.first_name} readOnly required/>
       </Form.Group>
       <Form.Group>
         <Form.Label>Categories</Form.Label>
@@ -67,8 +67,9 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
             <option value="Hotel">Hotel</option>
             <option value="Airport">Airport</option>
             <option value="Discounts">Discounts</option>
-            <option value="Misc">Misc</option>
             <option value="Shopping">Shopping</option>
+            <option value="Flight">Flight</option>
+            <option value="Misc">Misc</option>
           </Form.Control>
           <Form.Text className="text-muted">
             To select multiple: hold down command (mac) or ctrl (windows)

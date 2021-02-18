@@ -105,9 +105,9 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
             changeSort(e, city.airport_code, sortOption, e.target.value)
           }}
           className={styles.btn}
-          value="Misc"
+          value="Shopping"
         >
-          Misc
+          Shopping
         </Button>
         <Button
           onClick={(e) => {
@@ -115,9 +115,19 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
             changeSort(e, city.airport_code, sortOption, e.target.value)
           }}
           className={styles.btn}
-          value="Shopping"
+          value="Flight"
         >
-          Shopping
+          Flight
+        </Button>
+        <Button
+          onClick={(e) => {
+            setCategorySort(e.target.value);
+            changeSort(e, city.airport_code, sortOption, e.target.value)
+          }}
+          className={styles.btn}
+          value="Misc"
+        >
+          Misc
         </Button>
       </div>
       <ul className={styles.list}>
