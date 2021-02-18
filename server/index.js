@@ -53,8 +53,8 @@ app.get('/api/cities/:id', (req, res) => {
 /*  SORTING REVIEWS  */
 app.get('/api/:id', (req, res) => {
   const { id } = req.params;
-  const { sort } = req.query;
-  sortReviews(id, sort, (err, data) => {
+  const { sort, category } = req.query;
+  sortReviews(id, sort, category, (err, data) => {
     if (err) {
       res.status(404).send(err);
     }
