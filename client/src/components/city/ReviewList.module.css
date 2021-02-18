@@ -22,4 +22,31 @@
 
 .select {
   width: 25%;
+  border-color: #343a40;
+  padding: 0 10px;
+}
+
+.filterCategory {
+  width: 60%;
+  margin-top: 15px;
+  padding: 3px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f2f0f0;
+}
+
+.btn {
+  color: black;
+  height: 20px;
+  font-size: 13px;
+  background: none;
+  padding: 0 5px;
+  /* border: 1px solid #343a40; */
+  border: none;
+}
+
+.btn:hover, .btn:not(:disabled):not(.disabled):active, .btn:focus {
+  background-color: #343a40;
+  border-color: #343a40;
+  box-shadow: none;
 }
