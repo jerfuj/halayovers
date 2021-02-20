@@ -2,38 +2,37 @@ import React, {useState} from 'react';
 import $ from 'jquery';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import dateFormat from 'dateformat';
 import PropTypes from 'prop-types';
 
-const ReviewForm = ({ city, handleClose, getCityReviews }) => {
-  const [categories, setCategories] = useState('');
-  const [review, setReview] = useState('');
-  const airportCode = city.airport_code;
-  const token = JSON.parse(sessionStorage.getItem('token'));
-
+const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
+  const [name, setName] = useState(review.fa_name);
+  const [categories, setCategories] = useState(JSON.parse(review.categories));
+  const [text, setText] = useState(review.review_text);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleClose();
-    const now = new Date();
+    setShowEditForm(false);
     $.ajax({
       traditional: true,
-      method: 'POST',
-      url: `http://localhost:3000/api/cities/${airportCode}/review`,
+      method: 'PATCH',
+      url: `http://localhost:3000/api/cities/review/${review.id}`,
       data: {
-        name: token.first_name,
-        date: dateFormat(now, "yyyy-mm-dd HH:MM:ss"),
+        name,
         categories,
-        review
+        text
       },
       success: () => {
-        handleClose();
+        setShowEditForm(false);
         getCityReviews();
       },
       error: (err) => {
         console.error(err);
       }
     })
+  }
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
   }
 
   const handleCategoriesChange = (e) => {
@@ -43,20 +42,25 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
     ))
     setCategories(selected);
   }
-
-  const handleReviewChange = (e) => {
-    setReview(e.target.value);
+  const handleTextChange = (e) => {
+    setText(e.target.value);
   }
 
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="name">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="text" value={token.first_name} readOnly required/>
+        <Form.Control type="text" onChange={handleNameChange} defaultValue={name} required/>
       </Form.Group>
       <Form.Group>
         <Form.Label>Categories</Form.Label>
-          <Form.Control as="select" multiple onChange={handleCategoriesChange} required>
+          <Form.Control
+            as="select"
+            multiple
+            onChange={handleCategoriesChange}
+            defaultValue={categories}
+            required
+          >
             <option value="Food">Food</option>
             <option value="Sightseeing">Sightseeing</option>
             <option value="Hotel">Hotel</option>
@@ -73,7 +77,8 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
       <Form.Group>
         <Form.Control as="textarea" rows={5}
           placeholder="Tell us about it!"
-          onChange={handleReviewChange}
+          onChange={handleTextChange}
+          defaultValue={text}
           required
         />
       </Form.Group>
@@ -88,10 +93,10 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
   )
 }
 
-ReviewForm.propTypes = {
-  city: PropTypes.instanceOf(Object).isRequired,
-  handleClose: PropTypes.instanceOf(Function).isRequired,
-  getCityReviews: PropTypes.instanceOf(Function).isRequired,
+EditForm.propTypes = {
+  review: PropTypes.instanceOf(Object).isRequired,
+  setShowEditForm: PropTypes.bool.isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired
 }
 
-export default ReviewForm;
+export default EditForm;

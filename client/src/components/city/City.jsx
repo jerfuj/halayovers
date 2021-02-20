@@ -1,9 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, useParams} from 'react-router-dom';
 import $ from 'jquery';
 import CityHeader from './CityHeader.jsx';
 import ReviewList from './ReviewList.jsx';
-import styles from './City.module.css';
 
 const City = () => {
   let { id } = useParams();
@@ -11,12 +11,10 @@ const City = () => {
   const [reviews, setReviews] = useState([]);
   const [hotelInfo, setHotelInfo] = useState([]);
 
-  const changeSort = (e, id) => {
-    const value = e.target.value;
-    console.log(value);
+  const changeSort = (e, id, sort, category = null) => {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3000/api/${id}?sort=${value}`,
+      url: `http://localhost:3000/api/${id}?sort=${sort}&category=${category}`,
       success: (data) => {
         setReviews(data);
       },
@@ -46,7 +44,7 @@ const City = () => {
   }, [])
 
   return (
-    <div className={styles.cityContainer}>
+    <div>
       <CityHeader city={city} />
       <ReviewList
         city={city}

@@ -2,14 +2,34 @@ const express = require('express');
 const path = require('path')
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { getCities, getReviews, postReview, upVote, sortReviews } = require('../database/index');
+const {
+  getCities,
+  getReviews,
+  postReview,
+  upVote,
+  sortReviews,
+  getUser,
+  deleteReview,
+  editReview
+} = require('../database/index');
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
 app.use(express.static(`${__dirname}/../client/dist`));
+
+app.post('/login', (req, res) => {
+  const { empNumber, password } = req.body;
+  getUser(empNumber, password, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    }
+    res.status(200).send(data[0]);
+  })
+})
 
 app.get('/api/cities', (req, res) => {
   getCities((err, data) => {
@@ -33,8 +53,8 @@ app.get('/api/cities/:id', (req, res) => {
 /*  SORTING REVIEWS  */
 app.get('/api/:id', (req, res) => {
   const { id } = req.params;
-  const { sort } = req.query;
-  sortReviews(id, sort, (err, data) => {
+  const { sort, category } = req.query;
+  sortReviews(id, sort, category, (err, data) => {
     if (err) {
       res.status(404).send(err);
     }
@@ -53,6 +73,16 @@ app.post('/api/cities/:id/review', (req, res) => {
   })
 })
 
+app.patch('/api/cities/review/:id', (req, res) => {
+  const { id } = req.params;
+  editReview(id, req.body, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    }
+    res.status(200).send(data);
+  })
+})
+
 app.patch('/api/review/:id/upvote', (req, res) => {
   const { id } = req.params;
   upVote(id, (err, data) => {
@@ -61,9 +91,17 @@ app.patch('/api/review/:id/upvote', (req, res) => {
     }
     res.status(200).send(data);
   })
-
 })
 
+app.delete('/api/review/:id/delete', (req, res) => {
+  const { id } = req.params;
+  deleteReview(id, (err, data) => {
+    if (err) {
+      res.status(404).send(err);
+    }
+    res.status(200).send(data);
+  })
+})
 
 app.get('*', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, '../client/dist/')});

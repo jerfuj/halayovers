@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import ReviewForm from './ReviewForm.jsx';
+import PropTypes from 'prop-types';
 
 const ModalForm = ({ city, show, handleClose, getCityReviews }) => {
   return (
@@ -15,6 +16,13 @@ const ModalForm = ({ city, show, handleClose, getCityReviews }) => {
       </Modal.Body>
     </Modal>
   )
+}
+
+ModalForm.propTypes = {
+  city: PropTypes.instanceOf(Object).isRequired,
+  show: PropTypes.bool.isRequired,
+  handleClose: PropTypes.instanceOf(Function).isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired,
 }
 
 export default ModalForm;

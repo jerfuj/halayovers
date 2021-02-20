@@ -1,21 +1,34 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
-import dateFormat from 'dateformat';
+import EditFormModal from './EditFormModal.jsx';
 import styles from './Review.module.css';
-import Button from 'react-bootstrap/Button'
 import TimeAgo from 'react-timeago';
+import PropTypes from 'prop-types';
 
-const Review = ({review}) => {
+const Review = ({review, getCityReviews}) => {
   const categories = JSON.parse(review.categories);
-  const date = dateFormat(review.date, 'shortDate')
   const [btnDisable, setBtnDisable] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const upVote = () => {
     $.ajax({
       method: 'PATCH',
       url: `http://localhost:3000/api/review/${review.id}/upvote`,
-      success: (res) => {
+      success: () => {
         setBtnDisable(true);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  const deleteReview = () => {
+    $.ajax({
+      method: 'DELETE',
+      url: `http://localhost:3000/api/review/${review.id}/delete`,
+      success: () => {
+        getCityReviews();
       },
       error: (err) => {
         console.error(err);
@@ -30,27 +43,51 @@ const Review = ({review}) => {
           {review.fa_name}
         </div>
         <div className={styles.date}>
-          <TimeAgo date={review.date} />
+          <TimeAgo live={false} date={review.date} />
         </div>
       </div>
       <div className={styles.categories}>
-        <i>Category:</i> {categories.join(', ')}
+        <span className={styles.category}>Category:</span> {categories.join(', ')}
       </div>
       <div className={styles.text}>
-        <i>Tip:</i> {review.review_text}
+        {review.review_text}
       </div>
-      <div className={styles.upvotes}>
-        <Button
-          variant="outline-primary"
-          size="sm"
+      <div className={styles.buttons}>
+        <button
           onClick={upVote}
+          className={styles.btn}
           disabled={btnDisable}
         >
-          useful
-        </Button>
+          Useful {review.upvotes}
+        </button>
+        <div className={styles.editAndDelete}>
+          <button
+            onClick={() => {setShowEditForm(true)}}
+            className={styles.btn}
+          >
+            Edit
+          </button>
+          <button
+            className={styles.btn}
+            onClick={deleteReview}
+          >
+            Delete
+          </button>
+        </div>
+        <EditFormModal
+          review={review}
+          show={showEditForm}
+          setShowEditForm={setShowEditForm}
+          getCityReviews={getCityReviews}
+        />
       </div>
     </li>
   )
+}
+
+Review.propTypes = {
+  review: PropTypes.instanceOf(Object).isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired,
 }
 
 export default Review;

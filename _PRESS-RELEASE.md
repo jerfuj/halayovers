@@ -17,28 +17,44 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Layover Reviews
+  > Flight Attendant Layover Info & Tips
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
+  For flight attendants who are unfamiliar with their layover destination or who are just curious what tips others might have!
+
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+
+  This application allows flight attendants to choose the destination they are flying to (or just curious about), and discover all of the valuable tips and advice from others who have worked that route before them. Users are also encouraged to post about their own experiences after a layover.
 
 ## Problem ##
   > Describe the problem your product solves.
 
+  When you're called in to work last minute or are just unfamiliar with the destination you're flying to and have no idea what to do on your layover. Also staying informed with "common knowledge" that the crew may have with a particular trip/layover.
+
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+
+  By allowing all flight attendants to share their experiences and tips, the entire group will be informed of the best things to do on layovers, and things to be mindful of.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
 
+  "No idea what to do on your layover? Check out what others have done!"
+
 ## How to Get Started ##
   > Describe how easy it is to get started.
+
+  It's as easy as logging in, picking the destination, and reading the posts that pertain to the topic(s) you're interested in!
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
+  "I got short called to work my first international, and this took out all of the guess work and anxiety that comes with flying to a new destination!"
+
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+
+  With all of the valuable advice you're going to receive, please make sure you also share YOUR experiences and continue to spread the love!

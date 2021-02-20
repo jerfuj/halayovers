@@ -36,25 +36,45 @@ const getReviews = (id, callback) => {
   })
 }
 
-const sortReviews = (id, sort, callback) => {
+const sortReviews = (id, sort, category, callback) => {
   let query;
-  if (sort === 'recent') {
-    query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date DESC`
-  }
-  if (sort === 'highestrated') {
-    query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY upvotes DESC`
-  }
-  if (sort === 'oldest') {
-    query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date ASC`
-  }
-  connection.query(query, [id], (err, data) => {
-    if (err) {
-      console.log(err);
-      callback(err);
-    } else {
-      callback(err, data);
+  if (category === 'null') {
+    if (sort === 'recent') {
+      query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date DESC`
     }
-  })
+    if (sort === 'highestrated') {
+      query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY upvotes DESC`
+    }
+    if (sort === 'oldest') {
+      query = `SELECT * FROM reviews WHERE airport_code=? ORDER BY date ASC`
+    }
+    connection.query(query, [id], (err, data) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(err, data);
+      }
+    })
+  } else {
+    let categoryLike = `%${category}%`;
+    if (sort === 'recent') {
+      query = `SELECT * FROM reviews WHERE airport_code=? AND categories LIKE ? ORDER BY date DESC`
+    }
+    if (sort === 'highestrated') {
+      query = `SELECT * FROM reviews WHERE airport_code=? AND categories LIKE ? ORDER BY upvotes DESC`
+    }
+    if (sort === 'oldest') {
+      query = `SELECT * FROM reviews WHERE airport_code=? AND categories LIKE ? ORDER BY date ASC`
+    }
+    connection.query(query, [id, categoryLike], (err, data) => {
+      if (err) {
+        console.log(err);
+        callback(err);
+      } else {
+        callback(err, data);
+      }
+    })
+  }
 }
 
 const postReview = (id, reviewData, callback) => {
@@ -67,7 +87,20 @@ const postReview = (id, reviewData, callback) => {
       console.log(err);
       callback(err);
     } else {
-      console.log(data);
+      callback(err, data);
+    }
+  })
+}
+
+const editReview = (id, editData, callback) => {
+  let { name, categories, text } = editData;
+  if (typeof categories === 'string') {
+    categories = [categories];
+  }
+  connection.query('UPDATE reviews SET fa_name=?, categories=?, review_text=? WHERE id=?', [name, JSON.stringify(categories), text, id], (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
       callback(err, data);
     }
   })
@@ -83,10 +116,35 @@ const upVote = (id, callback) => {
   })
 }
 
+const deleteReview = (id, callback) => {
+  connection.query('DELETE FROM reviews WHERE id=?', [id], (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(err, data);
+    }
+  })
+}
+
+const getUser = (empNumber, password, callback) => {
+  connection.query('SELECT emp_number, first_name, last_name from users WHERE emp_number=? AND password=?', [empNumber, password], (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(err, data);
+    }
+  })
+}
+
+
+
 module.exports = {
   getCities,
   getReviews,
   postReview,
   upVote,
-  sortReviews
+  deleteReview,
+  sortReviews,
+  getUser,
+  editReview
 }

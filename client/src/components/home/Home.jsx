@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CityLink from './CityLink.jsx';
 import styles from './Home.module.css';
 
@@ -9,11 +9,15 @@ const Home = ({ cities }) => {
     <div className={styles.homeContainer}>
       <div className={styles.linkContainer}>
         {cities.map(city => (
-          <CityLink city={city}/>
+          <CityLink key={city.airport_code} city={city}/>
         ))}
       </div>
     </div>
   )
+}
+
+Home.propTypes = {
+  cities: PropTypes.instanceOf(Object).isRequired
 }
 
 export default Home;
