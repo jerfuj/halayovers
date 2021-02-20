@@ -27,6 +27,11 @@
   padding: 0 10px;
 }
 
+.select:focus {
+  box-shadow: none;
+  border-color: #343a40;
+}
+
 .filterCategory {
   width: 60%;
   margin-top: 15px;

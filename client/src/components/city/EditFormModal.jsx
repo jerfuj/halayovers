@@ -1,6 +1,7 @@
 import React from 'react';
 import EditForm from './EditForm.jsx';
 import Modal from 'react-bootstrap/Modal';
+import PropTypes from 'prop-types';
 
 const EditFormModal = ({ review, show, setShowEditForm, getCityReviews }) => {
 
@@ -20,6 +21,13 @@ const EditFormModal = ({ review, show, setShowEditForm, getCityReviews }) => {
       </Modal.Body>
     </Modal>
   )
+}
+
+EditFormModal.propTypes = {
+  review: PropTypes.instanceOf(Object).isRequired,
+  setShowEditForm: PropTypes.bool.isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired,
+  show: PropTypes.bool.isRequired
 }
 
 export default EditFormModal;

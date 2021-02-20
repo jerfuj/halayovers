@@ -27,7 +27,7 @@ Once the project moves into development, the press release can be used as a touc
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
-  This application allows the user to choose the destination they are heading to (or just curious about), and discover all of the valuable tips and advice from others who have worked that route in the past. Users are also encouraged to write their own reviews and share their experiences after a layover.
+  This application allows flight attendants to choose the destination they are flying to (or just curious about), and discover all of the valuable tips and advice from others who have worked that route before them. Users are also encouraged to post about their own experiences after a layover.
 
 ## Problem ##
   > Describe the problem your product solves.

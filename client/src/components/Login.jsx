@@ -3,6 +3,7 @@ import $ from 'jquery';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import styles from './Login.module.css';
+import PropTypes from 'prop-types';
 
 const Login = ({ setToken }) => {
   const [empNumber, setEmpNumber] = useState('');
@@ -54,6 +55,10 @@ const Login = ({ setToken }) => {
       </Form>
     </div>
   )
+}
+
+Login.propTypes = {
+  setToken: PropTypes.instanceOf(Function).isRequired,
 }
 
 export default Login;

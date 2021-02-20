@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import styles from './Hotel.module.css';
+import PropTypes from 'prop-types';
 
 const Hotel = ({ hotelInfo }) => {
   if (!hotelInfo) {
@@ -52,6 +53,10 @@ const Hotel = ({ hotelInfo }) => {
       </Table>
     </div>
   )
+}
+
+Hotel.propTypes = {
+  hotelInfo: PropTypes.instanceOf(Object).isRequired,
 }
 
 export default Hotel;

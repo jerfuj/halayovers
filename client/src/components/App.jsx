@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 import $ from 'jquery';
 import Home from './home/Home.jsx';
 import City from './city/City.jsx';

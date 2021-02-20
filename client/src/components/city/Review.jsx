@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import $ from 'jquery';
 import EditFormModal from './EditFormModal.jsx';
-import dateFormat from 'dateformat';
 import styles from './Review.module.css';
-import Button from 'react-bootstrap/Button'
 import TimeAgo from 'react-timeago';
+import PropTypes from 'prop-types';
 
 const Review = ({review, getCityReviews}) => {
   const categories = JSON.parse(review.categories);
@@ -15,7 +14,7 @@ const Review = ({review, getCityReviews}) => {
     $.ajax({
       method: 'PATCH',
       url: `http://localhost:3000/api/review/${review.id}/upvote`,
-      success: (res) => {
+      success: () => {
         setBtnDisable(true);
       },
       error: (err) => {
@@ -28,8 +27,7 @@ const Review = ({review, getCityReviews}) => {
     $.ajax({
       method: 'DELETE',
       url: `http://localhost:3000/api/review/${review.id}/delete`,
-      success: (res) => {
-        console.log('DELETED!')
+      success: () => {
         getCityReviews();
       },
       error: (err) => {
@@ -64,7 +62,7 @@ const Review = ({review, getCityReviews}) => {
         </button>
         <div className={styles.editAndDelete}>
           <button
-            onClick={(e) => {setShowEditForm(true)}}
+            onClick={() => {setShowEditForm(true)}}
             className={styles.btn}
           >
             Edit
@@ -85,6 +83,11 @@ const Review = ({review, getCityReviews}) => {
       </div>
     </li>
   )
+}
+
+Review.propTypes = {
+  review: PropTypes.instanceOf(Object).isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired,
 }
 
 export default Review;

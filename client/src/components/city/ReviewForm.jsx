@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import $ from 'jquery';
-import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import dateFormat from 'dateformat';
+import PropTypes from 'prop-types';
 
 const ReviewForm = ({ city, handleClose, getCityReviews }) => {
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
   const [categories, setCategories] = useState('');
   const [review, setReview] = useState('');
   const airportCode = city.airport_code;
   const token = JSON.parse(sessionStorage.getItem('token'));
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
         categories,
         review
       },
-      success: (res) => {
+      success: () => {
         handleClose();
         getCityReviews();
       },
@@ -37,12 +36,6 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
     })
   }
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  }
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  }
   const handleCategoriesChange = (e) => {
     let selected = Array.from(e.target.selectedOptions);
     selected = selected.map(select => (
@@ -50,9 +43,11 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
     ))
     setCategories(selected);
   }
+
   const handleReviewChange = (e) => {
     setReview(e.target.value);
   }
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="name">
@@ -91,6 +86,12 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
     </Form>
 
   )
+}
+
+ReviewForm.propTypes = {
+  city: PropTypes.instanceOf(Object).isRequired,
+  handleClose: PropTypes.instanceOf(Function).isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired,
 }
 
 export default ReviewForm;

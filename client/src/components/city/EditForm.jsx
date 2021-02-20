@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import $ from 'jquery';
-import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 
 const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
   const [name, setName] = useState(review.fa_name);
   const [categories, setCategories] = useState(JSON.parse(review.categories));
   const [text, setText] = useState(review.review_text);
-  const airportCode = review.airport_code;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +21,7 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
         categories,
         text
       },
-      success: (res) => {
+      success: () => {
         setShowEditForm(false);
         getCityReviews();
       },
@@ -35,9 +34,7 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
   const handleNameChange = (e) => {
     setName(e.target.value);
   }
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  }
+
   const handleCategoriesChange = (e) => {
     let selected = Array.from(e.target.selectedOptions);
     selected = selected.map(select => (
@@ -94,6 +91,12 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
     </Form>
 
   )
+}
+
+EditForm.propTypes = {
+  review: PropTypes.instanceOf(Object).isRequired,
+  setShowEditForm: PropTypes.bool.isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired
 }
 
 export default EditForm;

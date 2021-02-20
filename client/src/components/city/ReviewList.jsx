@@ -5,6 +5,7 @@ import FormModal from './FormModal.jsx';
 import styles from './ReviewList.module.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types';
 
 const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) => {
   const [show, setShow] = useState(false);
@@ -24,7 +25,7 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
         getCityReviews={getCityReviews}
       />
       <div className={styles.btnAndSortContainer}>
-        <Button variant="outline-dark" onClick={handleShow}>Write a Review!</Button>
+        <Button variant="outline-dark" onClick={handleShow}>Share a tip!</Button>
         <Form.Control
           as="select"
           className={styles.select}
@@ -34,7 +35,7 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
           }}
         >
           <option value="recent">Most Recent</option>
-          <option value="highestrated">Highest Rated</option>
+          <option value="highestrated">Most Useful</option>
           <option value="oldest">Oldest</option>
         </Form.Control>
       </div>
@@ -137,6 +138,14 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
       </ul>
     </div>
   )
+}
+
+ReviewList.propTypes = {
+  city: PropTypes.instanceOf(Object).isRequired,
+  reviews: PropTypes.instanceOf(Object).isRequired,
+  getCityReviews: PropTypes.instanceOf(Function).isRequired,
+  hotelInfo: PropTypes.instanceOf(Object).isRequired,
+  changeSort: PropTypes.instanceOf(Function).isRequired
 }
 
 export default ReviewList;
