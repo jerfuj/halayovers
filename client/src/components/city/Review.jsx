@@ -5,7 +5,7 @@ import styles from './Review.module.css';
 import TimeAgo from 'react-timeago';
 import PropTypes from 'prop-types';
 
-const Review = ({review, getCityReviews}) => {
+const Review = ({ review, getCityReviews }) => {
   const categories = JSON.parse(review.categories);
   const [btnDisable, setBtnDisable] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);

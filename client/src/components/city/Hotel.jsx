@@ -49,7 +49,6 @@ const Hotel = ({ hotelInfo }) => {
             <td>{hotelInfo.pickup} prior to departure</td>
           </tr>
         </tbody>
-
       </Table>
     </div>
   )
