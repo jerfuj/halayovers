@@ -60,7 +60,7 @@
     justify-content: space-between;
     flex-direction: column;
     height: 85px;
-    margin-top: 0;
+    margin-top: 15px;
   }
   .share Button {
     width: 100%;
