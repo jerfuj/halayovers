@@ -14,19 +14,6 @@
   margin-top: 15px;;
 }
 
-@media (max-width: 520px) {
-  .btnAndSortContainer {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 85px;
-    margin-top: 0;
-  }
-  .share Button {
-    width: 100%;
-  }
-}
-
 .list {
   width: 100%;
   display: flex;
@@ -65,4 +52,22 @@
   background-color: #343a40;
   border-color: #343a40;
   box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .btnAndSortContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 85px;
+    margin-top: 0;
+  }
+  .share Button {
+    width: 100%;
+  }
+  .filterCategory {
+    width: 90%;
+    height: 60px;
+    align-items: center;
+  }
 }
