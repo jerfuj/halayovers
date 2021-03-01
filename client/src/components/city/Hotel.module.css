@@ -19,5 +19,6 @@
 @media (max-width: 600px) {
   .tableContainer {
     width: 90%;
+    margin-bottom: 0;
   }
 }
