@@ -95,7 +95,7 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
 
 EditForm.propTypes = {
   review: PropTypes.instanceOf(Object).isRequired,
-  setShowEditForm: PropTypes.bool.isRequired,
+  setShowEditForm: PropTypes.instanceOf(Function).isRequired,
   getCityReviews: PropTypes.instanceOf(Function).isRequired
 }
 
