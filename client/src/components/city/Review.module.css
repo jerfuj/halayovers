@@ -6,7 +6,12 @@
   padding: 15px;
 }
 
-.nameAndDate, .buttons{
+.nameAndDate {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
   display: flex;
   justify-content: space-between;
 }
@@ -30,6 +35,10 @@
 .category, .date {
   font-size: 14px;
   font-weight: 200;
+}
+
+.editAndDelete {
+  display: flex;
 }
 
 .editAndDelete button {
@@ -56,4 +65,23 @@
 
 .btn:disabled:hover {
   background: none;
+}
+
+@media (max-width: 520px) {
+  .reviewContainer {
+    width: 90%;
+  }
+  .name {
+    font-size: 18px;
+  }
+  .text {
+    margin: 10px 5px;
+    font-size: 14px;
+  }
+  .categories {
+    font-size: 13px;
+  }
+  .category, .date {
+    font-size: 12px;
+  }
 }
