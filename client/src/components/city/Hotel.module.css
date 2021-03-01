@@ -15,3 +15,9 @@
 .table td {
   padding: 0;
 }
+
+@media (max-width: 600px) {
+  .tableContainer {
+    width: 90%;
+  }
+}
