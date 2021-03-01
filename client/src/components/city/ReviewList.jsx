@@ -25,19 +25,22 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
         getCityReviews={getCityReviews}
       />
       <div className={styles.btnAndSortContainer}>
-        <Button variant="outline-dark" onClick={handleShow}>Share a tip!</Button>
-        <Form.Control
-          as="select"
-          className={styles.select}
-          onChange={(e) => {
-            setSortOption(e.target.value);
-            changeSort(e, city.airport_code, e.target.value, categorySort);
-          }}
-        >
-          <option value="recent">Most Recent</option>
-          <option value="highestrated">Most Useful</option>
-          <option value="oldest">Oldest</option>
-        </Form.Control>
+        <div className={styles.share}>
+          <Button variant="outline-dark" onClick={handleShow}>Share a tip!</Button>
+        </div>
+        <div className={styles.select}>
+          <Form.Control
+            as="select"
+            onChange={(e) => {
+              setSortOption(e.target.value);
+              changeSort(e, city.airport_code, e.target.value, categorySort);
+            }}
+          >
+            <option value="recent">Most Recent</option>
+            <option value="highestrated">Most Useful</option>
+            <option value="oldest">Oldest</option>
+          </Form.Control>
+        </div>
       </div>
       <div className={styles.filterCategory}>
         <Button
