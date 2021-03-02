@@ -8,6 +8,7 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
   const [name, setName] = useState(review.fa_name);
   const [categories, setCategories] = useState(JSON.parse(review.categories));
   const [text, setText] = useState(review.review_text);
+  const token = JSON.parse(sessionStorage.getItem('token'));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +51,7 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="name">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="text" onChange={handleNameChange} defaultValue={name} required/>
+        <Form.Control type="text" onChange={handleNameChange} value={token.first_name} readOnly required/>
       </Form.Group>
       <Form.Group>
         <Form.Label>Categories</Form.Label>
