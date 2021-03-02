@@ -11,7 +11,7 @@ const {
   getUser,
   deleteReview,
   editReview
-} = require('../database/index');
+} = require('./database/index');
 
 const app = express();
 const port = 3000;
