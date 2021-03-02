@@ -15,7 +15,6 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
     e.preventDefault();
     handleClose();
     const now = new Date();
-    console.log('TOKEN in handleSubmit', token)
     $.ajax({
       traditional: true,
       method: 'POST',
@@ -23,7 +22,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
       data: {
         name: token.first_name,
         fa_id: token.emp_number,
-        date: dateFormat(now, "yyyy-mm-dd HH:MM:ss"),
+        date: dateFormat(now, "UTC:yyyy-mm-dd HH:MM:ss"),
         categories,
         review
       },
