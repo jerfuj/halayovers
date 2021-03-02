@@ -11,21 +11,21 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
   const airportCode = city.airport_code;
   const token = JSON.parse(sessionStorage.getItem('token'));
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     handleClose();
     const now = new Date();
+    console.log('TOKEN in handleSubmit', token)
     $.ajax({
       traditional: true,
       method: 'POST',
       url: `https://peaceful-oasis-17394.herokuapp.com/api/cities/${airportCode}/review`,
       data: {
         name: token.first_name,
+        fa_id: token.emp_number,
         date: dateFormat(now, "yyyy-mm-dd HH:MM:ss"),
         categories,
-        review,
-        fa_id: token.emp_number
+        review
       },
       success: () => {
         handleClose();
