@@ -19,7 +19,7 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
-app.use(express.static(`${__dirname}/../client/dist`));
+app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 app.post('/login', (req, res) => {
   const { empNumber, password } = req.body;
