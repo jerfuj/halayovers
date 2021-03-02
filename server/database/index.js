@@ -1,24 +1,39 @@
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-  // host: 'localhost',
-  // user: 'student',
-  // password: 'student',
-  // database: 'ha',
-  host: 'us-cdbr-east-03.cleardb.com',
-  user: 'bc54a977f04a98',
-  password: '9866e82b',
-  database: 'heroku_04094f2fa96e716',
-  multipleStatements: true
-});
+let connection;
 
-connection.connect((err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('Connected to MySQL!')
-  }
-});
+const handleDisconnect = () => {
+   connection = mysql.createConnection({
+    // host: 'localhost',
+    // user: 'student',
+    // password: 'student',
+    // database: 'ha',
+    host: 'us-cdbr-east-03.cleardb.com',
+    user: 'bc54a977f04a98',
+    password: '9866e82b',
+    database: 'heroku_04094f2fa96e716',
+    multipleStatements: true
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      console.log('error connecting to db:', err);
+      setTimeout(handleDisconnect, 2000)
+    } else {
+      console.log('Connected to MySQL!')
+    }
+  });
+
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+      handleDisconnect();
+    } else {
+      throw err;
+    }
+  });
+}
+handleDisconnect();
 
 const getCities = (callback) => {
   connection.query('SELECT * FROM cities', (err, data) => {
