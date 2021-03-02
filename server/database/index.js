@@ -82,11 +82,11 @@ const sortReviews = (id, sort, category, callback) => {
 }
 
 const postReview = (id, reviewData, callback) => {
-  let { name, date, categories, review } = reviewData;
+  let { name, fa_id, date, categories, review } = reviewData;
   if (typeof categories === 'string') {
     categories = [categories];
   }
-  connection.query('INSERT INTO reviews (airport_code, fa_name, date, categories, review_text, upvotes) VALUES (?, ?, ?, ?, ?, ?)', [id, name, date, JSON.stringify(categories), review, 0], (err, data) => {
+  connection.query('INSERT INTO reviews (airport_code, fa_name, fa_id, date, categories, review_text, upvotes) VALUES (?, ?, ?, ?, ?, ?, ?)', [id, name, fa_id, date, JSON.stringify(categories), review, 0], (err, data) => {
     if (err) {
       console.log(err);
       callback(err);
