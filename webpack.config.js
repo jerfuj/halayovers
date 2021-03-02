@@ -1,8 +1,7 @@
-/* eslint-disable no-undef */
 const path = require('path');
 
-const SRC_DIR = path.join(__dirname, '/src');
-const DIST_DIR = path.join(__dirname, '/dist');
+const SRC_DIR = path.join(__dirname, '/client/src');
+const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
   mode: 'development',

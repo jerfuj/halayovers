@@ -14,7 +14,7 @@ const {
 } = require('./database/index');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -106,6 +106,6 @@ app.get('*', (req, res) => {
   res.sendFile('index.html', {root: path.join(__dirname, '../client/dist/')});
 })
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}!`)
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}!`)
 })
