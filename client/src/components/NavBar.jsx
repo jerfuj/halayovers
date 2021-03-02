@@ -29,7 +29,7 @@ const NavBar = ({ cities }) => {
           <Nav.Link href="/">Home</Nav.Link>
           <NavDropdown title="Cities" id="basic-nav-dropdown">
             {cities.map(city => (
-              <NavDropdown.Item key={city.airport_code} href={`/${city.airport_code}`} className={styles.dropdownItem}>{city.airport_code}</NavDropdown.Item>
+              <NavDropdown.Item key={city.airport_code} href={`https://peaceful-oasis-17394.herokuapp.com/${city.airport_code}`} className={styles.dropdownItem}>{city.airport_code}</NavDropdown.Item>
             ))}
           </NavDropdown>
         </Nav>
