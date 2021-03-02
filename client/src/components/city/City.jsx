@@ -14,7 +14,7 @@ const City = () => {
   const changeSort = (e, id, sort, category = null) => {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3000/api/${id}?sort=${sort}&category=${category}`,
+      url: `http://https://peaceful-oasis-17394.herokuapp.com//api/${id}?sort=${sort}&category=${category}`,
       success: (data) => {
         setReviews(data);
       },
@@ -27,7 +27,7 @@ const City = () => {
   const getCityReviews = () => {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3000/api/cities/${id}`,
+      url: `http://https://peaceful-oasis-17394.herokuapp.com//api/cities/${id}`,
       success: (data) => {
         setCity(data[0][0]);
         setReviews(data[1]);

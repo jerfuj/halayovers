@@ -21,7 +21,7 @@ const Login = ({ setToken }) => {
     e.preventDefault();
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:3000/login',
+      url: 'http://https://peaceful-oasis-17394.herokuapp.com//login',
       data: {empNumber, password},
       success: (res) => {
         if (res === '') {

@@ -16,7 +16,7 @@ const EditForm = ({ review, setShowEditForm, getCityReviews }) => {
     $.ajax({
       traditional: true,
       method: 'PATCH',
-      url: `http://localhost:3000/api/cities/review/${review.id}`,
+      url: `http://https://peaceful-oasis-17394.herokuapp.com//api/cities/review/${review.id}`,
       data: {
         name,
         categories,
