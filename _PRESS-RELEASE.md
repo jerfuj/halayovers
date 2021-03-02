@@ -14,7 +14,6 @@
   When you're called in to work last minute or are just unfamiliar with the destination you're flying to and have no idea what to do on your layover. Also staying informed with "common knowledge" that the crew may have with a particular trip/layover.
 
 ## Solution ##
-
   By allowing all flight attendants to share their experiences and tips, the entire group will be informed of the best things to do on layovers, and things to be mindful of.
 
 ## Quote from You ##
