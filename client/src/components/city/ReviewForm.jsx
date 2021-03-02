@@ -24,7 +24,8 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
         name: token.first_name,
         date: dateFormat(now, "yyyy-mm-dd HH:MM:ss"),
         categories,
-        review
+        review,
+        fa_id: token.emp_number
       },
       success: () => {
         handleClose();
