@@ -8,3 +8,15 @@
   right: 0;
   margin: auto;
 }
+
+.errorMessage {
+  text-align: center;
+  font-style: italic;
+  margin: 0;
+  color: #c10000;
+}
+
+.guestMessage {
+  font-size: 12px;
+  text-align: center;
+}
