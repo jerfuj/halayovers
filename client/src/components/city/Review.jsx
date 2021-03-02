@@ -13,7 +13,7 @@ const Review = ({ review, getCityReviews }) => {
   const upVote = () => {
     $.ajax({
       method: 'PATCH',
-      url: `http://https://peaceful-oasis-17394.herokuapp.com//api/review/${review.id}/upvote`,
+      url: `https://peaceful-oasis-17394.herokuapp.com/api/review/${review.id}/upvote`,
       success: () => {
         setBtnDisable(true);
       },
@@ -26,7 +26,7 @@ const Review = ({ review, getCityReviews }) => {
   const deleteReview = () => {
     $.ajax({
       method: 'DELETE',
-      url: `http://https://peaceful-oasis-17394.herokuapp.com//api/review/${review.id}/delete`,
+      url: `https://peaceful-oasis-17394.herokuapp.com/api/review/${review.id}/delete`,
       success: () => {
         getCityReviews();
       },

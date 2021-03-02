@@ -19,7 +19,7 @@ const ReviewForm = ({ city, handleClose, getCityReviews }) => {
     $.ajax({
       traditional: true,
       method: 'POST',
-      url: `http://https://peaceful-oasis-17394.herokuapp.com//api/cities/${airportCode}/review`,
+      url: `https://peaceful-oasis-17394.herokuapp.com/api/cities/${airportCode}/review`,
       data: {
         name: token.first_name,
         date: dateFormat(now, "yyyy-mm-dd HH:MM:ss"),

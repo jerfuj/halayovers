@@ -24,7 +24,7 @@ const App = () => {
   useEffect(() => {
     $.ajax({
       method: 'GET',
-      url: 'http://https://peaceful-oasis-17394.herokuapp.com//api/cities',
+      url: 'https://peaceful-oasis-17394.herokuapp.com/api/cities',
       success: (data) => {
         setCities(data);
       },
