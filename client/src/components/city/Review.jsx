@@ -36,6 +36,29 @@ const Review = ({ review, getCityReviews }) => {
     })
   }
 
+  const showEditAndDeleteButtons = () => {
+    const token = JSON.parse(sessionStorage.getItem('token'));
+    if (token.emp_number === review.fa_id) {
+      return (
+        <div className={styles.editAndDelete}>
+          <button
+              onClick={() => {setShowEditForm(true)}}
+              className={styles.btn}
+            >
+              Edit
+          </button>
+          <button
+            className={styles.btn}
+            onClick={deleteReview}
+          >
+            Delete
+          </button>
+        </div>
+      )
+    }
+    return null;
+  }
+
   return (
     <li className={styles.reviewContainer}>
       <div className={styles.nameAndDate} >
@@ -60,20 +83,7 @@ const Review = ({ review, getCityReviews }) => {
         >
           Useful {review.upvotes}
         </button>
-        <div className={styles.editAndDelete}>
-          <button
-            onClick={() => {setShowEditForm(true)}}
-            className={styles.btn}
-          >
-            Edit
-          </button>
-          <button
-            className={styles.btn}
-            onClick={deleteReview}
-          >
-            Delete
-          </button>
-        </div>
+        {showEditAndDeleteButtons()}
         <EditFormModal
           review={review}
           show={showEditForm}
