@@ -108,7 +108,7 @@ app.delete('/api/review/:id/delete', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.sendFile('index.html', {root: path.join(__dirname, '../client/dist/')});
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 })
 
 app.listen(PORT, () => {
