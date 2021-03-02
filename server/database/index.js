@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
   // database: 'ha',
   host: 'us-cdbr-east-03.cleardb.com',
   user: 'bc54a977f04a98',
-  password: '9866e82',
+  password: '9866e82b',
   database: 'heroku_04094f2fa96e716',
   multipleStatements: true
 });
