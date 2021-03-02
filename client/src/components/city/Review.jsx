@@ -59,8 +59,6 @@ const Review = ({ review, getCityReviews }) => {
     return null;
   }
 
-  console.log(review.date);
-
   return (
     <li className={styles.reviewContainer}>
       <div className={styles.nameAndDate} >
