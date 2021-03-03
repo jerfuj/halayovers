@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CityLink from './CityLink.jsx';
 import styles from './Home.module.css';
@@ -6,27 +6,34 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
 const Home = ({ cities }) => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
+  const [show, setShow] = useState(true);
+  const handleClose = () => {
+    setShow(false);
+    sessionStorage.setItem('visited', true);
+  }
 
   useEffect(() => {
-    setShow(true);
+    if (sessionStorage.getItem('visited')) {
+      setShow(false);
+    }
   }, [])
 
   return (
     <div className={styles.homeContainer}>
       <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Welcome!</Modal.Title>
+        </Modal.Header>
         <Modal.Body>
-          <h4>Aloha!</h4>
           <p>
             For best demo experience, head over to KIX! Thanks for looking!
-
+          </p>
+          <p className={styles.jeremy}>
             - Jeremy
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleClose}>Close</Button>
+          <Button variant="success" onClick={handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
       <div className={styles.linkContainer}>
