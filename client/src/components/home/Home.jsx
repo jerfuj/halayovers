@@ -26,7 +26,7 @@ const Home = ({ cities }) => {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button onClick={handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
       <div className={styles.linkContainer}>
