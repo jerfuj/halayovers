@@ -48,6 +48,26 @@ VALUES (19899, 'password', 'Jeremy', 'Fujimoto'),
 (0, 0, 'Guest', 'User');
 
 INSERT INTO hotels (airport_code, name, address, phone, microwave, fridge, gym, breakfast, shuttle, pickup) VALUES
+('AKL', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('AUS', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'Yes', 'Free', 'Yes', '[Shuttle Company]', '1:30'),
+('BNE', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('BOS', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'No', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('CTS', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('FUK', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'No', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('HND', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('JFK', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('LAS', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'No', 'Free', 'Yes', '[Shuttle Company]', '1:30'),
+('LAX', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('LGB', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'Yes', 'Free', 'Yes', '[Shuttle Company]', '1:30'),
+('MCO', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'No', 'Free', 'Yes', '[Shuttle Company]', '1:30'),
+('NRT', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('OAK', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('ONT', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'No', 'Free', 'Yes', '[Shuttle Company]', '1:30'),
+('SFO', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'No', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30'),
+('SYD', '[Hotel Name]', '[Hotel Address]', '[Hotel Phone Number]', 'Yes', 'Yes', 'Free', 'No', '[Shuttle Company]', '1:30');
+
+
+
 ('ICN', 'Sheraton Grand Incheon Hotel', 'South Korea, Incheon, Yeonsu-gu, Songdo 1(il)-dong, 153 Convensia-road', '+82 32-835-1000', 'No', 'Yes', 'Free', 'No', 'Hotel Shuttle', '2:00'),
 ('KIX', 'Swissotel Nankai Osaka', '5 chome-1-60 Nanba, Chuo Ward, Osaka, 542-0076, Japan', '+81 6-6646-1111', 'No', 'Yes', 'Paid', 'No', 'Cab Station Company', '2:15'),
 ('OAK', 'Hilton Oakland Airport', '1 Hegenberger Rd, Oakland, CA 94621', '(510) 635-5000', 'No', 'Yes', 'Free', 'No', 'Hotel Shuttle', 'N/A'),
