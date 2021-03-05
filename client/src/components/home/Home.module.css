@@ -5,11 +5,20 @@
   align-items: center;
 }
 
+.welcomeHeader {
+  width: 100%;
+  text-align: center;
+}
+
 .linkContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 25px;
+}
+
+.welcomeText {
+  text-align: center;
 }
 
 .jeremy {

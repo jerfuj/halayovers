@@ -21,16 +21,22 @@ const Home = ({ cities }) => {
   return (
     <div className={styles.homeContainer}>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Welcome!</Modal.Title>
+        <Modal.Header>
+          <div className={styles.welcomeHeader}>
+            <Modal.Title>Welcome!</Modal.Title>
+          </div>
         </Modal.Header>
         <Modal.Body>
-          <p>
-            For best demo experience, head over to KIX! Thanks for stopping by!
-          </p>
-          <p className={styles.jeremy}>
-            - Jeremy
-          </p>
+          <div className={styles.welcomeText}>
+            <p>
+              For best demo experience, head over to <b>KIX</b>!
+              <br />
+              Thanks for stopping by!
+            </p>
+            <p className={styles.jeremy}>
+              - Jeremy
+            </p>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={handleClose}>Close</Button>
