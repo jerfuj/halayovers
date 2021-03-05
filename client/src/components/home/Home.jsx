@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CityLink from './CityLink.jsx';
 import styles from './Home.module.css';
@@ -26,7 +26,7 @@ const Home = ({ cities }) => {
         </Modal.Header>
         <Modal.Body>
           <p>
-            For best demo experience, head over to KIX! Thanks for looking!
+            For best demo experience, head over to KIX! Thanks for stopping by!
           </p>
           <p className={styles.jeremy}>
             - Jeremy
