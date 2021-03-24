@@ -12,6 +12,7 @@ Halayovers allows flight attendants to choose the destination they are flying to
 ## Technologies Used
 * React
 * React router
+* Node.js
 * Express
 * MySQL
 * CSS Modules
