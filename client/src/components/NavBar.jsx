@@ -13,12 +13,6 @@ const NavBar = ({ cities }) => {
   return (
     <Navbar sticky="top" expand="sm">
       <Navbar.Brand href="/">
-        {/* <img
-          alt="Hawaiian Airlines Logo"
-          src="https://bigbrain-itemdetails.s3-us-west-1.amazonaws.com/HA+Logo.png"
-          height="45"
-          className="d-inline-block align-top"
-        />{' '} */}
         <Navbar.Text>
           <h3 className={styles.title}>HALayovers</h3>
         </Navbar.Text>
