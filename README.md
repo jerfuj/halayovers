@@ -1,5 +1,5 @@
-# Halayovers
-Halayovers allows flight attendants to choose the destination they are flying to (or just curious about), and discover all of the valuable tips and advice from others who have worked that route before them.
+# HALayovers
+HALayovers allows flight attendants to choose the destination they are flying to (or just curious about), and discover all of the valuable tips and advice from others who have worked that route before them.
 
 ## Screenshots
 #### Home Page

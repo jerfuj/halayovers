@@ -20,7 +20,7 @@ const NavBar = ({ cities }) => {
           className="d-inline-block align-top"
         />{' '} */}
         <Navbar.Text>
-          <h3 className={styles.title}>Halayovers</h3>
+          <h3 className={styles.title}>HALayovers</h3>
         </Navbar.Text>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
