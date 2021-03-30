@@ -1,5 +1,4 @@
 .app {
-  /* background-image: url("https://hawaiianair.sharepoint.com/_api/v2.1/sites/hawaiianair.sharepoint.com,b841feb5-4f99-4f2d-8947-bc0f2c97b7a0,e0658bb1-5511-4e35-88d7-58cbebabb411/lists/7efc8457-9359-4bd4-841e-80b3fbdb9477/items/d6626615-5ded-4046-aee8-1a470bed049f/driveItem/thumbnails/0/c2560x99999/content?preferNoRedirect=true&prefer=extendCacheMaxAge&clientType=modernWebPart"); */
   background-image: url("https://img.s-hawaiianairlines.com/static/images/brand/refresh/image-hero.jpg?version=c11e&sc_lang=en");
   display: flex;
   justify-content: center;
@@ -22,7 +21,7 @@
 .title {
   color: black;
   margin: 0 12px 0 0;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 23px;
 }
 
