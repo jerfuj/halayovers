@@ -26,7 +26,7 @@ const ReviewList = ({ city, reviews, getCityReviews, hotelInfo, changeSort }) =>
       />
       <div className={styles.btnAndSortContainer}>
         <div className={styles.share}>
-          <Button variant="outline-dark" onClick={handleShow}>Share a tip!</Button>
+          <Button variant="success" onClick={handleShow}>Share a tip!</Button>
         </div>
         <div className={styles.select}>
           <Form.Control
