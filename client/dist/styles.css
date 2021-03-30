@@ -25,7 +25,8 @@ body {
 
 .navbar-light .navbar-nav .nav-link {
   color: #000;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 300;
 }
 
 .btn-success,
