@@ -24,7 +24,8 @@ body {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgb(71, 61, 143);
+  color: #000;
+  font-size: 18px;
 }
 
 .btn-success,
@@ -46,6 +47,8 @@ body {
 }
 
 .navbar {
-  background-color: #fff;
+  background-color: #fffdfd;
   box-shadow: rgb(0 0 0 / 35%) 0px 1px 10px;
+  padding-left: 7.5%;
+  padding-right: 7.5%;
 }
