@@ -10,11 +10,11 @@ HALayovers allows flight attendants to choose the destination they are flying to
 * CSS Modules
 
 ## Screenshots
-#### Home Page
+### Home Page
 ![Home page](/screenshots/home-page.png)
-#### City Page
+### City Page
 ![City page](/screenshots/city-page-top.png)
-#### Posts Section of City Page
+### Posts Section of City Page
 ![Posts section](/screenshots/city-page-posts.png)
 
 ## Installation
