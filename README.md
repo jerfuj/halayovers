@@ -5,9 +5,9 @@ HALayovers allows flight attendants to choose the destination they are flying to
 #### Home Page
 ![Home page](/screenshots/home-page.png)
 #### City Page
-![City page](/screenshots/city-page.png)
+![City page](/screenshots/city-page-top.png)
 #### Posts Section of City Page
-![Posts section](/screenshots/posts.png)
+![Posts section](/screenshots/city-page-posts.png)
 
 ## Technologies Used
 * React
