@@ -49,7 +49,7 @@ const Login = ({ setToken }) => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" onChange={changePassword}/>
         </Form.Group>
-        <p className={styles.guestMessage}>*Guests: Use Employee Number 0 and Password 0</p>
+        <p className={styles.guestMessage}><b>Guests:</b> Please use Employee Number 0 and Password 0.</p>
         <Button variant="success" type="submit">
           Submit
         </Button>
